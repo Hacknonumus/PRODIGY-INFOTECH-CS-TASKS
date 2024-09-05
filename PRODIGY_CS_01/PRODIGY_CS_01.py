@@ -1,5 +1,7 @@
 #!/usr/bin/python3.12
 
+'''simple tool to encrypt/decrypt text using caesar cipher'''
+
 import argparse
 
 def caesar_cipher(text,shift,mode):
@@ -11,8 +13,6 @@ def caesar_cipher(text,shift,mode):
                 result_char = chr((ord(char) - base + shift) % 26 + base)
             elif mode == 'd':
                 result_char = chr((ord(char) - base - shift) % 26 + base)
-            else:
-                raise ValueError("Invalid action. Use 'e' to encrypt or 'd' to decrypt")
             result += result_char
         else:
             result += char
@@ -21,8 +21,10 @@ def caesar_cipher(text,shift,mode):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="....SIMPLE SCRIPT TO ENCRYPT DECRYPT USING CAESAR CIPHER ALGHORITHEM.... ",
-    usage="""python PRODIGY_CS_01.py -m e -s 10 -t "This is part of internship at prodigy_infotech"
-    python PRODIGY_CS_01.py -m d -s 10 -t "Drsc sc zkbd yp sxdobxcrsz kd zbynsqi_sxpydomr" """)
+    usage="""
+            python PRODIGY_CS_01.py -m e -s 10 -t "This is part of internship at prodigy_infotech"
+            python PRODIGY_CS_01.py -m d -s 10 -t "Drsc sc zkbd yp sxdobxcrsz kd zbynsqi_sxpydomr" 
+    """)
     
     # input_text shift encrypt-decrypt
     parser.add_argument("-t","--text",type=str,help="Input text for encypt or decrypt")
@@ -35,4 +37,3 @@ if __name__ == "__main__":
     shift=args.shift
     mode=args.mode
     print(caesar_cipher(text,shift,mode))
-    
