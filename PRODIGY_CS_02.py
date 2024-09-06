@@ -11,7 +11,8 @@ def encrypt_image(image_path, key):
     img_array = np.array(image)
     # Ensure the key is within the valid range for uint8
     key = key % 256
-    encrypted_array = img_array ^ key  # XOR operation
+    # XOR operation for encryption
+    encrypted_array = img_array ^ key
     encrypted_image = Image.fromarray(encrypted_array.astype(np.uint8))
     encrypted_image.save(f"encrypted_{image_path}")
 
@@ -21,7 +22,8 @@ def decrypt_image(encrypted_image_path, key):
     encrypted_array = np.array(encrypted_image)
     # Ensure the key is within the valid range for uint8
     key = key % 256
-    decrypted_array = encrypted_array ^ key  # XOR operation again to decrypt
+    # XOR operation for decryption (same as encryption)
+    decrypted_array = encrypted_array ^ key
     decrypted_image = Image.fromarray(decrypted_array.astype(np.uint8))
     decrypted_image.save(f"decrypted_{encrypted_image_path}")
 

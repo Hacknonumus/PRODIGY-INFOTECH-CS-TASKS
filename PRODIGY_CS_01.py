@@ -36,4 +36,7 @@ if __name__ == "__main__":
     text=args.text
     shift=args.shift
     mode=args.mode
-    print(caesar_cipher(text,shift,mode))
+    if mode:
+        print(caesar_cipher(text,shift,mode))
+    else:
+        print("[!] didn't get anything ! use >> python PRODIGY_CS_01.py -h")
